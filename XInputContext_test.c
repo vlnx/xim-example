@@ -67,8 +67,7 @@ int main() {
 
     long im_event_mask;
     XGetICValues(xic, XNFilterEvents, &im_event_mask, NULL);
-	XSelectInput(dis, win, FocusChangeMask | KeyPressMask | im_event_mask);
-    XSetICFocus(xic);
+	XSelectInput(dis, win, KeyPressMask | im_event_mask);
 	XMapWindow(dis, win);
 
 	while (1) {
@@ -76,12 +75,6 @@ int main() {
         XNextEvent(dis, &event);
         if (XFilterEvent(&event, None)) continue;
 		switch  (event.type) {
-            case FocusIn:
-                XSetICFocus(xic);
-                break;
-            case FocusOut:
-                XUnsetICFocus(xic);
-                break;
 	 		case KeyPress:
                 key_press(event.xkey);
                 break;
