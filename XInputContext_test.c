@@ -53,30 +53,30 @@ int main() {
     if (setlocale(LC_ALL, "") == NULL) exit(1);
     if (XSetLocaleModifiers("") == NULL) exit(1);
 
-	dis = XOpenDisplay(NULL);
-	win = XCreateSimpleWindow(dis, RootWindow(dis, 0), 1, 1, 500, 500, 0,
-	        BlackPixel (dis, 0), BlackPixel(dis, 0));
+    dis = XOpenDisplay(NULL);
+    win = XCreateSimpleWindow(dis, RootWindow(dis, 0), 1, 1, 500, 500, 0,
+            BlackPixel (dis, 0), BlackPixel(dis, 0));
 
     xim = XOpenIM(dis, NULL, 0, 0);
-	xic = XCreateIC(xim,
+    xic = XCreateIC(xim,
                     XNInputStyle, XIMPreeditNothing | XIMStatusNothing,
                     XNClientWindow, win,
                     XNFocusWindow, win,
                     NULL);
     if (xic == NULL) exit(1);
 
-	XSelectInput(dis, win, KeyPressMask);
-	XMapWindow(dis, win);
+    XSelectInput(dis, win, KeyPressMask);
+    XMapWindow(dis, win);
 
-	while (1) {
-	    XEvent event;
+    while (1) {
+        XEvent event;
         XNextEvent(dis, &event);
         if (XFilterEvent(&event, None)) continue;
-		switch  (event.type) {
-	 		case KeyPress:
+        switch  (event.type) {
+             case KeyPress:
                 key_press(event.xkey);
                 break;
-		}
-	}
+        }
+    }
     return 0;
 }
