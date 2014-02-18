@@ -66,7 +66,6 @@ int main() {
     if (xic == NULL) exit(1);
 
     long im_event_mask;
-    XGetICValues(xic, XNFilterEvents, &im_event_mask, NULL);
 	XSelectInput(dis, win, KeyPressMask | im_event_mask);
 	XMapWindow(dis, win);
 
