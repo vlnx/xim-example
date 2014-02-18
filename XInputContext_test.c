@@ -65,8 +65,7 @@ int main() {
                     NULL);
     if (xic == NULL) exit(1);
 
-    long im_event_mask;
-	XSelectInput(dis, win, KeyPressMask | im_event_mask);
+	XSelectInput(dis, win, KeyPressMask);
 	XMapWindow(dis, win);
 
 	while (1) {
