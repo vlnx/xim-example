@@ -15,6 +15,8 @@ XEvent event;
 XIM xim;
 XIC xic;
 
+// This function is taken from the following StackOverflow question.
+// http://stackoverflow.com/questions/20018901/
 void utf8print(unsigned int cp) {
     if (cp < 0x80) {
         printf("%c", cp);
@@ -30,6 +32,7 @@ void key_press(XKeyEvent ev) {
     int len;
     KeySym keySym;
     Status status;
+    // 512 is the buffer size used in rxvt-unicode
     unsigned int wkbuf[513];
     len = XwcLookupString(xic, &ev,
                                 wkbuf, 512, &keySym, &status);
