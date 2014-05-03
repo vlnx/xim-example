@@ -1,7 +1,6 @@
-all: xim.o link
+all:
+	gcc -c xim.c
+	gcc xim.o -lX11 -o xim
 
-xim.o: xim.c
-	gcc -c xim.c -I/usr/X11R6/include
-
-link: xim.o
-	gcc xim.o -L/usr/X11R6/lib -lX11 -o xim
+clean:
+	rm xim.o
