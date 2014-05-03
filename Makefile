@@ -1,7 +1,7 @@
-all: XInputContext_test.o link
+all: xim.o link
 
-XInputContext_test.o: XInputContext_test.c
-	gcc -c XInputContext_test.c -I/usr/X11R6/include
+xim.o: xim.c
+	gcc -c xim.c -I/usr/X11R6/include
 
-link: XInputContext_test.o
-	gcc XInputContext_test.o -L/usr/X11R6/lib -lX11 -o XInputContext_test
+link: xim.o
+	gcc xim.o -L/usr/X11R6/lib -lX11 -o xim
